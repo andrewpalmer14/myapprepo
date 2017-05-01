@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Friends</ion-title>
+    <ion-buttons  icon-only end>
+      <button ion-button (click)="onAddFriendsClicked()">
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let friend of friends" (click)="onItemClicked(friend)">
+      <h2>{{ friend.name }}</h2>
+      <p>{{ friend.latitude }} lat, {{ friend.longitude }} long</p>
+      <ion-note item-right>{{ friend.relationship }}</ion-note>
+    </button>
+  </ion-list>
+</ion-content>

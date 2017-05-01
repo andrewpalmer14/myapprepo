@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{ friend.name || 'New Friend' }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onTrash()" *ngIf="friend.id">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="onSave()" [disabled]="!f.valid">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form #f='ngForm'>
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="friend.name" name="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Relationship</ion-label>
+        <ion-select [(ngModel)]="friend.relationship" name="relationship" required>
+          <ion-option *ngFor="let relationship of relationships">{{ relationship }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Latitude</ion-label>
+        <ion-input type="number" [(ngModel)]="friend.latitude" name="latitude" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Longitude</ion-label>
+        <ion-input type="number" [(ngModel)]="friend.longitude" name="longitude" required></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
